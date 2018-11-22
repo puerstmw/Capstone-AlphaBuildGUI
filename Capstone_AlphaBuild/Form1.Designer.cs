@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -61,7 +60,7 @@
             this.TB_Limits2 = new System.Windows.Forms.TextBox();
             this.TB_DataTypes2 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.BT_DataSet2 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.TB_NodeName2 = new System.Windows.Forms.TextBox();
             this.P_Node3 = new System.Windows.Forms.Panel();
@@ -74,7 +73,7 @@
             this.TB_Limits3 = new System.Windows.Forms.TextBox();
             this.TB_DataTypes3 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BT_DataSet3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.TB_NodeName3 = new System.Windows.Forms.TextBox();
             this.P_Node4 = new System.Windows.Forms.Panel();
@@ -87,7 +86,7 @@
             this.TB_Limits4 = new System.Windows.Forms.TextBox();
             this.TB_DataTypes4 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.BT_DataSet4 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.TB_NodeName4 = new System.Windows.Forms.TextBox();
             this.P_Node5 = new System.Windows.Forms.Panel();
@@ -100,15 +99,19 @@
             this.TB_Limits5 = new System.Windows.Forms.TextBox();
             this.TB_DataTypes5 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.BT_DataSet5 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.TB_NodeName5 = new System.Windows.Forms.TextBox();
             this.BT_AddNode = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.RTB_DataSetViewer = new System.Windows.Forms.RichTextBox();
+            this.BT_SimNodeDataFulln5 = new System.Windows.Forms.Button();
+            this.BT_SendtoN1 = new System.Windows.Forms.Button();
+            this.BT_SimDataTime = new System.Windows.Forms.Button();
             this.BT_StopSim = new System.Windows.Forms.Button();
             this.BT_StartSim = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.DataChartScatter1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.BT_DecodeData = new System.Windows.Forms.Button();
             this.RTB_DecodedData = new System.Windows.Forms.RichTextBox();
@@ -116,10 +119,8 @@
             this.RTB_Data = new System.Windows.Forms.RichTextBox();
             this.Timer_FormUpdate = new System.Windows.Forms.Timer(this.components);
             this.BGW_LifecycleDemo = new System.ComponentModel.BackgroundWorker();
-            this.BT_SimDataTime = new System.Windows.Forms.Button();
-            this.BT_SendtoN1 = new System.Windows.Forms.Button();
-            this.BT_SimNodeDataFulln5 = new System.Windows.Forms.Button();
-            this.RTB_DataSetViewer = new System.Windows.Forms.RichTextBox();
+            this.BT_ChartRefresh1 = new System.Windows.Forms.Button();
+            this.BT_Add5NodesSim = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -130,7 +131,7 @@
             this.P_Node5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataChartScatter1)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -312,6 +313,7 @@
             this.BT_DataSet1.TabIndex = 2;
             this.BT_DataSet1.Text = "Data  Set";
             this.BT_DataSet1.UseVisualStyleBackColor = true;
+            this.BT_DataSet1.Click += new System.EventHandler(this.BT_DataSet1_Click);
             // 
             // BT_EditN1Name
             // 
@@ -347,7 +349,7 @@
             this.P_Node2.Controls.Add(this.TB_Limits2);
             this.P_Node2.Controls.Add(this.TB_DataTypes2);
             this.P_Node2.Controls.Add(this.button10);
-            this.P_Node2.Controls.Add(this.button11);
+            this.P_Node2.Controls.Add(this.BT_DataSet2);
             this.P_Node2.Controls.Add(this.button12);
             this.P_Node2.Controls.Add(this.TB_NodeName2);
             this.P_Node2.Location = new System.Drawing.Point(3, 115);
@@ -445,14 +447,15 @@
             this.button10.Text = "Edit Parameters";
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // BT_DataSet2
             // 
-            this.button11.Location = new System.Drawing.Point(922, 42);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(88, 35);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "Data  Set";
-            this.button11.UseVisualStyleBackColor = true;
+            this.BT_DataSet2.Location = new System.Drawing.Point(922, 42);
+            this.BT_DataSet2.Name = "BT_DataSet2";
+            this.BT_DataSet2.Size = new System.Drawing.Size(88, 35);
+            this.BT_DataSet2.TabIndex = 2;
+            this.BT_DataSet2.Text = "Data  Set";
+            this.BT_DataSet2.UseVisualStyleBackColor = true;
+            this.BT_DataSet2.Click += new System.EventHandler(this.BT_DataSet2_Click);
             // 
             // button12
             // 
@@ -487,7 +490,7 @@
             this.P_Node3.Controls.Add(this.TB_Limits3);
             this.P_Node3.Controls.Add(this.TB_DataTypes3);
             this.P_Node3.Controls.Add(this.button2);
-            this.P_Node3.Controls.Add(this.button3);
+            this.P_Node3.Controls.Add(this.BT_DataSet3);
             this.P_Node3.Controls.Add(this.button4);
             this.P_Node3.Controls.Add(this.TB_NodeName3);
             this.P_Node3.Location = new System.Drawing.Point(3, 227);
@@ -585,14 +588,15 @@
             this.button2.Text = "Edit Parameters";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // BT_DataSet3
             // 
-            this.button3.Location = new System.Drawing.Point(922, 42);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 35);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Data  Set";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BT_DataSet3.Location = new System.Drawing.Point(922, 42);
+            this.BT_DataSet3.Name = "BT_DataSet3";
+            this.BT_DataSet3.Size = new System.Drawing.Size(88, 35);
+            this.BT_DataSet3.TabIndex = 2;
+            this.BT_DataSet3.Text = "Data  Set";
+            this.BT_DataSet3.UseVisualStyleBackColor = true;
+            this.BT_DataSet3.Click += new System.EventHandler(this.BT_DataSet3_Click);
             // 
             // button4
             // 
@@ -627,7 +631,7 @@
             this.P_Node4.Controls.Add(this.TB_Limits4);
             this.P_Node4.Controls.Add(this.TB_DataTypes4);
             this.P_Node4.Controls.Add(this.button6);
-            this.P_Node4.Controls.Add(this.button7);
+            this.P_Node4.Controls.Add(this.BT_DataSet4);
             this.P_Node4.Controls.Add(this.button8);
             this.P_Node4.Controls.Add(this.TB_NodeName4);
             this.P_Node4.Location = new System.Drawing.Point(3, 339);
@@ -725,14 +729,15 @@
             this.button6.Text = "Edit Parameters";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // BT_DataSet4
             // 
-            this.button7.Location = new System.Drawing.Point(922, 42);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 35);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Data  Set";
-            this.button7.UseVisualStyleBackColor = true;
+            this.BT_DataSet4.Location = new System.Drawing.Point(922, 42);
+            this.BT_DataSet4.Name = "BT_DataSet4";
+            this.BT_DataSet4.Size = new System.Drawing.Size(88, 35);
+            this.BT_DataSet4.TabIndex = 2;
+            this.BT_DataSet4.Text = "Data  Set";
+            this.BT_DataSet4.UseVisualStyleBackColor = true;
+            this.BT_DataSet4.Click += new System.EventHandler(this.BT_DataSet4_Click);
             // 
             // button8
             // 
@@ -767,7 +772,7 @@
             this.P_Node5.Controls.Add(this.TB_Limits5);
             this.P_Node5.Controls.Add(this.TB_DataTypes5);
             this.P_Node5.Controls.Add(this.button14);
-            this.P_Node5.Controls.Add(this.button15);
+            this.P_Node5.Controls.Add(this.BT_DataSet5);
             this.P_Node5.Controls.Add(this.button16);
             this.P_Node5.Controls.Add(this.TB_NodeName5);
             this.P_Node5.Location = new System.Drawing.Point(3, 451);
@@ -865,14 +870,15 @@
             this.button14.Text = "Edit Parameters";
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // BT_DataSet5
             // 
-            this.button15.Location = new System.Drawing.Point(922, 42);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(88, 35);
-            this.button15.TabIndex = 2;
-            this.button15.Text = "Data  Set";
-            this.button15.UseVisualStyleBackColor = true;
+            this.BT_DataSet5.Location = new System.Drawing.Point(922, 42);
+            this.BT_DataSet5.Name = "BT_DataSet5";
+            this.BT_DataSet5.Size = new System.Drawing.Size(88, 35);
+            this.BT_DataSet5.TabIndex = 2;
+            this.BT_DataSet5.Text = "Data  Set";
+            this.BT_DataSet5.UseVisualStyleBackColor = true;
+            this.BT_DataSet5.Click += new System.EventHandler(this.BT_DataSet5_Click);
             // 
             // button16
             // 
@@ -907,6 +913,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.BT_Add5NodesSim);
             this.tabPage2.Controls.Add(this.RTB_DataSetViewer);
             this.tabPage2.Controls.Add(this.BT_SimNodeDataFulln5);
             this.tabPage2.Controls.Add(this.BT_SendtoN1);
@@ -920,6 +927,44 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Alpha Ctrls";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // RTB_DataSetViewer
+            // 
+            this.RTB_DataSetViewer.Location = new System.Drawing.Point(691, 176);
+            this.RTB_DataSetViewer.Name = "RTB_DataSetViewer";
+            this.RTB_DataSetViewer.Size = new System.Drawing.Size(529, 113);
+            this.RTB_DataSetViewer.TabIndex = 8;
+            this.RTB_DataSetViewer.Text = "";
+            // 
+            // BT_SimNodeDataFulln5
+            // 
+            this.BT_SimNodeDataFulln5.Location = new System.Drawing.Point(904, 132);
+            this.BT_SimNodeDataFulln5.Name = "BT_SimNodeDataFulln5";
+            this.BT_SimNodeDataFulln5.Size = new System.Drawing.Size(129, 29);
+            this.BT_SimNodeDataFulln5.TabIndex = 7;
+            this.BT_SimNodeDataFulln5.Text = "Data Sim n = 5";
+            this.BT_SimNodeDataFulln5.UseVisualStyleBackColor = true;
+            this.BT_SimNodeDataFulln5.Click += new System.EventHandler(this.BT_SimNodeDataFulln5_Click);
+            // 
+            // BT_SendtoN1
+            // 
+            this.BT_SendtoN1.Location = new System.Drawing.Point(904, 97);
+            this.BT_SendtoN1.Name = "BT_SendtoN1";
+            this.BT_SendtoN1.Size = new System.Drawing.Size(129, 29);
+            this.BT_SendtoN1.TabIndex = 6;
+            this.BT_SendtoN1.Text = "Send to N1";
+            this.BT_SendtoN1.UseVisualStyleBackColor = true;
+            this.BT_SendtoN1.Click += new System.EventHandler(this.BT_SendtoN1_Click);
+            // 
+            // BT_SimDataTime
+            // 
+            this.BT_SimDataTime.Location = new System.Drawing.Point(904, 62);
+            this.BT_SimDataTime.Name = "BT_SimDataTime";
+            this.BT_SimDataTime.Size = new System.Drawing.Size(129, 29);
+            this.BT_SimDataTime.TabIndex = 5;
+            this.BT_SimDataTime.Text = "Sim Data-Time";
+            this.BT_SimDataTime.UseVisualStyleBackColor = true;
+            this.BT_SimDataTime.Click += new System.EventHandler(this.BT_SimDataTime_Click_1);
             // 
             // BT_StopSim
             // 
@@ -945,7 +990,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.Chart1);
+            this.tabPage3.Controls.Add(this.BT_ChartRefresh1);
+            this.tabPage3.Controls.Add(this.DataChartScatter1);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1226, 636);
@@ -953,21 +999,17 @@
             this.tabPage3.Text = "Graphing";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Chart1
+            // DataChartScatter1
             // 
             chartArea1.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea1);
+            this.DataChartScatter1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.Chart1.Legends.Add(legend1);
-            this.Chart1.Location = new System.Drawing.Point(243, 17);
-            this.Chart1.Name = "Chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Chart1.Series.Add(series1);
-            this.Chart1.Size = new System.Drawing.Size(808, 615);
-            this.Chart1.TabIndex = 0;
-            this.Chart1.Text = "chart1";
+            this.DataChartScatter1.Legends.Add(legend1);
+            this.DataChartScatter1.Location = new System.Drawing.Point(243, 17);
+            this.DataChartScatter1.Name = "DataChartScatter1";
+            this.DataChartScatter1.Size = new System.Drawing.Size(808, 615);
+            this.DataChartScatter1.TabIndex = 0;
+            this.DataChartScatter1.Text = "chart1";
             // 
             // tabPage4
             // 
@@ -1026,42 +1068,26 @@
             // 
             this.BGW_LifecycleDemo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGW_LifecycleDemo_DoWork);
             // 
-            // BT_SimDataTime
+            // BT_ChartRefresh1
             // 
-            this.BT_SimDataTime.Location = new System.Drawing.Point(904, 62);
-            this.BT_SimDataTime.Name = "BT_SimDataTime";
-            this.BT_SimDataTime.Size = new System.Drawing.Size(129, 29);
-            this.BT_SimDataTime.TabIndex = 5;
-            this.BT_SimDataTime.Text = "Sim Data-Time";
-            this.BT_SimDataTime.UseVisualStyleBackColor = true;
-            this.BT_SimDataTime.Click += new System.EventHandler(this.BT_SimDataTime_Click_1);
+            this.BT_ChartRefresh1.Location = new System.Drawing.Point(76, 217);
+            this.BT_ChartRefresh1.Name = "BT_ChartRefresh1";
+            this.BT_ChartRefresh1.Size = new System.Drawing.Size(75, 31);
+            this.BT_ChartRefresh1.TabIndex = 1;
+            this.BT_ChartRefresh1.Text = "Graph";
+            this.BT_ChartRefresh1.UseVisualStyleBackColor = true;
+            this.BT_ChartRefresh1.Click += new System.EventHandler(this.BT_ChartRefresh1_Click);
             // 
-            // BT_SendtoN1
+            // BT_Add5NodesSim
             // 
-            this.BT_SendtoN1.Location = new System.Drawing.Point(904, 97);
-            this.BT_SendtoN1.Name = "BT_SendtoN1";
-            this.BT_SendtoN1.Size = new System.Drawing.Size(129, 29);
-            this.BT_SendtoN1.TabIndex = 6;
-            this.BT_SendtoN1.Text = "Send to N1";
-            this.BT_SendtoN1.UseVisualStyleBackColor = true;
-            this.BT_SendtoN1.Click += new System.EventHandler(this.BT_SendtoN1_Click);
-            // 
-            // BT_SimNodeDataFulln5
-            // 
-            this.BT_SimNodeDataFulln5.Location = new System.Drawing.Point(904, 132);
-            this.BT_SimNodeDataFulln5.Name = "BT_SimNodeDataFulln5";
-            this.BT_SimNodeDataFulln5.Size = new System.Drawing.Size(129, 29);
-            this.BT_SimNodeDataFulln5.TabIndex = 7;
-            this.BT_SimNodeDataFulln5.Text = "Data Sim n = 5";
-            this.BT_SimNodeDataFulln5.UseVisualStyleBackColor = true;
-            // 
-            // RTB_DataSetViewer
-            // 
-            this.RTB_DataSetViewer.Location = new System.Drawing.Point(691, 176);
-            this.RTB_DataSetViewer.Name = "RTB_DataSetViewer";
-            this.RTB_DataSetViewer.Size = new System.Drawing.Size(529, 113);
-            this.RTB_DataSetViewer.TabIndex = 8;
-            this.RTB_DataSetViewer.Text = "";
+            this.BT_Add5NodesSim.Location = new System.Drawing.Point(426, 25);
+            this.BT_Add5NodesSim.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BT_Add5NodesSim.Name = "BT_Add5NodesSim";
+            this.BT_Add5NodesSim.Size = new System.Drawing.Size(146, 35);
+            this.BT_Add5NodesSim.TabIndex = 9;
+            this.BT_Add5NodesSim.Text = "Create 5 Nodes";
+            this.BT_Add5NodesSim.UseVisualStyleBackColor = true;
+            this.BT_Add5NodesSim.Click += new System.EventHandler(this.BT_Add5NodesSim_Click);
             // 
             // Form1
             // 
@@ -1089,7 +1115,7 @@
             this.P_Node5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataChartScatter1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1115,7 +1141,7 @@
         private System.Windows.Forms.TextBox TB_Limits4;
         private System.Windows.Forms.TextBox TB_DataTypes4;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button BT_DataSet4;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox TB_NodeName4;
         private System.Windows.Forms.Panel P_Node3;
@@ -1123,7 +1149,7 @@
         private System.Windows.Forms.TextBox TB_Limits3;
         private System.Windows.Forms.TextBox TB_DataTypes3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BT_DataSet3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox TB_NodeName3;
         private System.Windows.Forms.Panel P_Node2;
@@ -1131,7 +1157,7 @@
         private System.Windows.Forms.TextBox TB_Limits2;
         private System.Windows.Forms.TextBox TB_DataTypes2;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button BT_DataSet2;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox TB_NodeName2;
         private System.Windows.Forms.Panel P_Node5;
@@ -1139,7 +1165,7 @@
         private System.Windows.Forms.TextBox TB_Limits5;
         private System.Windows.Forms.TextBox TB_DataTypes5;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button BT_DataSet5;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.TextBox TB_NodeName5;
         private System.Windows.Forms.RichTextBox RTB_Node1ColorStatus;
@@ -1160,7 +1186,7 @@
         private System.Windows.Forms.Label LB_Node4SN;
         private System.Windows.Forms.Label LB_Node5SN;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart DataChartScatter1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button BT_ReceiveData;
         private System.Windows.Forms.RichTextBox RTB_Data;
@@ -1184,6 +1210,8 @@
         private System.Windows.Forms.RichTextBox RTB_DataSetViewer;
         private System.Windows.Forms.Button BT_SimNodeDataFulln5;
         private System.Windows.Forms.Button BT_SendtoN1;
+        private System.Windows.Forms.Button BT_ChartRefresh1;
+        private System.Windows.Forms.Button BT_Add5NodesSim;
     }
 }
 

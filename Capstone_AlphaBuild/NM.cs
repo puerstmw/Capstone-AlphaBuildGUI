@@ -46,6 +46,11 @@ namespace Capstone_AlphaBuild
             NodeDict[NodeSN].LowLimit = newLowLimit;
         }
 
+        public static void  updateNodeData(List<double[]> Data, int NodeSN)
+        {
+            NodeDict[NodeSN].Data = Data;
+        }
+
         public class Node
         {
             public int SN { get; }

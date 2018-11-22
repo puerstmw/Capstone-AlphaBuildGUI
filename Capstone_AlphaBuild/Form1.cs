@@ -468,19 +468,171 @@ namespace Capstone_AlphaBuild
         //Testing
         private void BT_SimDataTime_Click_1(object sender, EventArgs e)
         {
-            RTB_DataSetViewer.Text = Testing.DecodeData();
+            RTB_DataSetViewer.Text = Testing.DecodeData(Testing.ProvideDataTime());
         }
 
         //Testing
         private void BT_SendtoN1_Click(object sender, EventArgs e)
         {
-            RTB_DataSetViewer.Text = Testing.DecodeData();
+            List<double[]> DataTime = new List<double[]>();
+            DataTime = Testing.ProvideDataTime();
+
+            RTB_DataSetViewer.Text = Testing.DecodeData(DataTime);
 
             try
             {
-                NM.NodeDict[0].Data.Add(Testing.ProvideDataTime())
+                NM.updateNodeData(DataTime, 1);
             }
             catch { }
+        }
+
+        private void BT_SimNodeDataFulln5_Click(object sender, EventArgs e)
+        {            
+            int counter = 0;
+            List<double[]> DataTime1 = new List<double[]>(Testing.ProvideDataTime());
+            List<double[]> DataTime2 = new List<double[]>(Testing.ProvideDataTime());
+            List<double[]> DataTime3 = new List<double[]>(Testing.ProvideDataTime());
+            List<double[]> DataTime4 = new List<double[]>(Testing.ProvideDataTime());
+            List<double[]> DataTime5 = new List<double[]>(Testing.ProvideDataTime());           
+
+            foreach (KeyValuePair<int, NM.Node> node in NM.NodeDict)
+            {
+                try
+                {
+                    switch (counter)
+                    {
+                        case 0:
+                            NM.updateNodeData(DataTime1, node.Key);
+                            counter++;
+                            break;
+                        case 1:
+                            NM.updateNodeData(DataTime2, node.Key);
+                            counter++;
+                            break;
+                        case 2:
+                            NM.updateNodeData(DataTime3, node.Key);
+                            counter++;
+                            break;
+                        case 3:
+                            NM.updateNodeData(DataTime4, node.Key);
+                            counter++;
+                            break;
+                        case 4:
+                            NM.updateNodeData(DataTime5, node.Key);
+                            counter++;
+                            break;
+                        default:
+                            break;
+                    }                    
+                }
+                catch { }
+            }
+        }
+
+        private void BT_DataSet1_Click(object sender, EventArgs e)
+        {
+            string DataDisplay = string.Empty;
+            foreach (double[] data in NM.NodeDict[Convert.ToInt32(LB_Node1SN.Text)].Data)
+            {
+                DataDisplay += data[0] + ", " + data[1] + "\n";
+            }
+            MessageBox.Show(DataDisplay);
+        }
+
+        private void BT_DataSet2_Click(object sender, EventArgs e)
+        {
+            string DataDisplay = string.Empty;
+            foreach (double[] data in NM.NodeDict[Convert.ToInt32(LB_Node2SN.Text)].Data)
+            {
+                DataDisplay += data[0] + ", " + data[1] + "\n";
+            }
+            MessageBox.Show(DataDisplay);
+        }
+
+        private void BT_DataSet3_Click(object sender, EventArgs e)
+        {
+            string DataDisplay = string.Empty;
+            foreach (double[] data in NM.NodeDict[Convert.ToInt32(LB_Node3SN.Text)].Data)
+            {
+                DataDisplay += data[0] + ", " + data[1] + "\n";
+            }
+            MessageBox.Show(DataDisplay);
+        }
+
+        private void BT_DataSet4_Click(object sender, EventArgs e)
+        {
+            string DataDisplay = string.Empty;
+            foreach (double[] data in NM.NodeDict[Convert.ToInt32(LB_Node4SN.Text)].Data)
+            {
+                DataDisplay += data[0] + ", " + data[1] + "\n";
+            }
+            MessageBox.Show(DataDisplay);
+        }
+
+        private void BT_DataSet5_Click(object sender, EventArgs e)
+        {
+            string DataDisplay = string.Empty;
+            foreach (double[] data in NM.NodeDict[Convert.ToInt32(LB_Node5SN.Text)].Data)
+            {
+                DataDisplay += data[0] + ", " + data[1] + "\n";
+            }
+            MessageBox.Show(DataDisplay);
+        }
+
+        private void BT_ChartRefresh1_Click(object sender, EventArgs e)
+        {
+            DataChartScatter1.Series.Add("Node 1");
+            DataChartScatter1.Series["Node 1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            DataChartScatter1.Series["Node 1"].Color = Color.Blue;
+            foreach (double[] DataTime in NM.NodeDict[1].Data)
+            {
+                DataChartScatter1.Series["Node 1"].Points.AddXY(DataTime[1], DataTime[0]);
+            }
+
+            DataChartScatter1.Series.Add("Node 2");
+            DataChartScatter1.Series["Node 2"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            DataChartScatter1.Series["Node 2"].Color = Color.Red;
+            foreach (double[] DataTime in NM.NodeDict[2].Data)
+            {
+                DataChartScatter1.Series["Node 2"].Points.AddXY(DataTime[1], DataTime[0]);
+            }
+
+            DataChartScatter1.Series.Add("Node 3");
+            DataChartScatter1.Series["Node 3"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            DataChartScatter1.Series["Node 3"].Color = Color.Green;
+            foreach (double[] DataTime in NM.NodeDict[55].Data)
+            {
+                DataChartScatter1.Series["Node 3"].Points.AddXY(DataTime[1], DataTime[0]);
+            }
+
+            DataChartScatter1.Series.Add("Node 4");
+            DataChartScatter1.Series["Node 4"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            DataChartScatter1.Series["Node 4"].Color = Color.Purple;
+            foreach (double[] DataTime in NM.NodeDict[8].Data)
+            {
+                DataChartScatter1.Series["Node 4"].Points.AddXY(DataTime[1], DataTime[0]);
+            }
+
+            DataChartScatter1.Series.Add("Node 5");
+            DataChartScatter1.Series["Node 5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            DataChartScatter1.Series["Node 5"].Color = Color.Orange;
+            foreach (double[] DataTime in NM.NodeDict[186745].Data)
+            {
+                DataChartScatter1.Series["Node 5"].Points.AddXY(DataTime[1], DataTime[0]);
+            }
+
+            //DataChartScatter1.AlignDataPointsByAxisLabel();
+
+
+        }
+
+        private void BT_Add5NodesSim_Click(object sender, EventArgs e)
+        {
+            Testing.SupplyUniqueNode();
+            Testing.SupplyUniqueNode();
+            Testing.SupplyUniqueNode();
+            Testing.SupplyUniqueNode();
+            Testing.SupplyUniqueNode();
         }
     }
 }
